@@ -1,2 +1,1 @@
-# react
-react + node.js code repo
+# react Blog repo

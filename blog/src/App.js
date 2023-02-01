@@ -45,6 +45,8 @@ function App() {
   );
 }
 
+
+// 컴포넌트 
 function Modal(){
   return (
     <div className="modal">

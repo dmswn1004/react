@@ -50,12 +50,12 @@ function App() {
         title.map(function(a, i){
           return (
             <div className="list" key={i}>
-              <h4 onClick={()=>{setModal(!modal)}}>{ title[i] }</h4>
-              <span onClick={()=>{
+              <h4 onClick={()=>{setModal(!modal)}}>{ title[i] } <span onClick={()=>{
                   let copy = [...like]
                   copy[i] += 1
                   setLike(copy) 
-                }}>👍</span> { like[i] }
+                }}>👍</span> { like[i] } </h4>
+              
               <p>2월 17일 발행</p>
             </div>)
         })
@@ -63,7 +63,7 @@ function App() {
 
       {/* 모달창 띄우기*/}
       {
-        modal == true ? <Modal/> : null
+        modal == true ? <Modal title={title}  setTitle={setTitle}/> : null
       }
 
     </div>
@@ -71,12 +71,17 @@ function App() {
 }
 
 // 컴포넌트 
-function Modal(){
+function Modal(props){
   return (
     <div className="modal">
-      <h4>제목</h4>
+      <h4>{props.title[0]}</h4>
       <p>날짜</p>
       <p>상세내용</p>
+      <button onClick={()=>{
+          let copy = [...props.title]; 
+          copy[0] = '여자코트 추천';
+          props.setTitle(copy);
+        }}>글 수정</button>
     </div>
   )
 }
